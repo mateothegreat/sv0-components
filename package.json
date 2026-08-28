@@ -1587,7 +1587,8 @@
     "typescript": "~5.9.2"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "rm -rf dist && cp -r src dist && cp package.json dist",
+    "release": "rm -rf dist && npm --no-git-tag-version --workspaces=false version from-git && cp -r src dist && cp package.json dist && pnpm publish --access public",
     "update": "bin/update-package package.json src",
     "check": "svelte-check && tsc",
     "dev": "vite",
