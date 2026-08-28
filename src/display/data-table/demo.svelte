@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Demo } from '@sv0/components/demos';
 	import {
 		FlexRender,
@@ -49,4 +49,4 @@
 			</p>
 		</div>
 	</Demo.Section>
-</Demo.Root>
+</Demo.Root> -->

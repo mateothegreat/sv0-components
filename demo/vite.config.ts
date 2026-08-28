@@ -45,10 +45,10 @@ export default defineConfig({
     // Include your library for pre-bundling in dev
     include: ["@sv0/stylesets"],
     // Exclude if you want Vite to always process the source
-    exclude: ["@sv0/components"]
+    exclude: ["@sv0/components", "@lucide/svelte"]
   },
   ssr: {
     // Ensure the library is processed during SSR
-    noExternal: ["@sv0/stylesets", "@sv0/components"]
+    noExternal: ["@sv0/stylesets", "@sv0/components", "@lucide/svelte"]
   }
 });

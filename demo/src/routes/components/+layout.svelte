@@ -21,7 +21,7 @@
   let { children } = $props();
 </script>
 
-<div class="h-full bg-red-500">
+<div class="h-full">
   <Sidebar.Provider class="h-full">
     <AppSidebar />
     <Sidebar.Inset>

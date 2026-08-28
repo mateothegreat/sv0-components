@@ -28,7 +28,7 @@
   const built = usePropsBuilder({ ...rest })
     // Merge the class attribute with our default class names (uses clsx under the hood)
     // and expose the className as a prop thats safe to use in the template (vs. `class`).
-    .withClassMerge("bg-background-alt shadow-card");
+    .withClassMerge("bg-background shadow-card");
 
   // We use the derived to create a reactive property that will update when the value changes.
   const isSelected = $derived(context?.selected === built.value);
@@ -39,14 +39,14 @@
 
 <div class={built.class} {...rest}>
   <div
-    class="shadow-mini-inset text-foreground/50 w-full rounded-lg text-sm leading-[0.01em] font-semibold">
+    class="shadow-mini-inset px-2 text-foreground/50 w-full rounded-lg text-sm leading-[0.01em] font-semibold">
     <button
       class="h-8 rounded-[4px] bg-transparent px-4 py-2 transition-all"
       class:shadow-mini={isSelected}
       class:bg-white={isSelected}
       class:rounded-lg={isSelected}
       class:text-foreground={isSelected}
-      class:dark:bg-muted={isSelected}
+      class:dark:bg-slate-500={isSelected}
       data-state={isSelected ? "active" : "inactive"}
       onclick={handleClick}
       type="button"
