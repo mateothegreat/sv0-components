@@ -89,4 +89,7 @@
   --scrollbar-thumb: var(--scrollbar-thumb);
   --scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
   --scrollbar-thumb-active: var(--scrollbar-thumb-active);
+
+  --color-tab-nav-background: var(--tab-nav-background);
+  --color-tab-nav-accent: var(--tab-nav-accent);
 }

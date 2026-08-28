@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --font-family: Poppins, sans-serif;
 }
 
@@ -62,5 +62,8 @@
     --scrollbar-thumb: oklch(0.35 0.03 274.38);
     --scrollbar-thumb-hover: oklch(0.52 0.05 275.87);
     --scrollbar-thumb-active: oklch(0.68 0.08 284.45);
+
+    --tab-nav-background: oklch(17.853% 0.00409 285.914);
+    --tab-nav-accent: oklch(30.133% 0.01797 285.253);
   }
-} */
+}

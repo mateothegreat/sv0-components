@@ -39,14 +39,13 @@
 
 <div class={built.class} {...rest}>
   <div
-    class="shadow-mini-inset px-2 text-foreground/50 w-full rounded-lg text-sm leading-[0.01em] font-semibold">
+    class="shadow-mini-inset bg-tab-nav-background text-foreground/50 w-full text-sm leading-[0.01em] font-semibold">
     <button
-      class="h-8 rounded-[4px] bg-transparent px-4 py-2 transition-all"
+      class="h-8 rounded-[4px] px-4 py-2 transition-all "
       class:shadow-mini={isSelected}
-      class:bg-white={isSelected}
       class:rounded-lg={isSelected}
       class:text-foreground={isSelected}
-      class:dark:bg-slate-500={isSelected}
+      class:dark:bg-tab-nav-accent={isSelected}
       data-state={isSelected ? "active" : "inactive"}
       onclick={handleClick}
       type="button"
