@@ -1604,5 +1604,5 @@
     "demo": "cd demo && pnpm dev"
   },
   "type": "module",
-  "version": "0.15.0"
+  "version": "0.5.0"
 }
