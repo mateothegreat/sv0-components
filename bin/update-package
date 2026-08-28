@@ -1,0 +1,47 @@
+#!/usr/bin/env npx tsx
+import { Exportable, ExportMode, updateExports } from "@sv0/packaging/packaging";
+import fs from "node:fs";
+
+const updated = updateExports(
+  {
+    packageJsonPath: process.argv[2],
+    rootPath: process.argv[3],
+    exportables: [Exportable.IMPORT, Exportable.REQUIRE, Exportable.DEFAULT],
+    matchers: ["index.ts"],
+    modes: [ExportMode.ROOT, ExportMode.WILDCARD]
+  },
+  {
+    "./theme": {
+      [Exportable.IMPORT]: "./theme/index.css",
+      [Exportable.DEFAULT]: "./theme/index.css"
+    },
+    "./theme/debug": {
+      [Exportable.IMPORT]: "./theme/debug.css",
+      [Exportable.DEFAULT]: "./theme/debug.css"
+    },
+    "./theme/theme": {
+      [Exportable.IMPORT]: "./theme/theme.css",
+      [Exportable.DEFAULT]: "./theme/theme.css"
+    },
+    "./theme/theme-dark": {
+      [Exportable.IMPORT]: "./theme/theme-dark.css",
+      [Exportable.DEFAULT]: "./theme/theme-dark.css"
+    },
+    "./theme/theme-light": {
+      [Exportable.IMPORT]: "./theme/theme-light.css",
+      [Exportable.DEFAULT]: "./theme/theme-light.css"
+    },
+    "./theme/theme.css": {
+      [Exportable.IMPORT]: "./theme/theme.css",
+      [Exportable.DEFAULT]: "./theme/theme.css"
+    },
+    "./theme/tailwind.config.js": {
+      [Exportable.IMPORT]: "./theme/tailwind.config.js",
+      [Exportable.DEFAULT]: "./theme/tailwind.config.js"
+    }
+  }
+);
+
+const pkg = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
+pkg.exports = updated.exports;
+fs.writeFileSync(process.argv[2], JSON.stringify(pkg, null, 2) + "\n");

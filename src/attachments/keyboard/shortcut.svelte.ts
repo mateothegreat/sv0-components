@@ -1,0 +1,353 @@
+import type { Action } from "svelte/action";
+
+export type Options = {
+  generateKbd?: boolean;
+};
+
+export type AppOptions = {
+  timeout?: number;
+} & Options;
+
+let defaultOptions = {
+  timeout: 1000,
+  generateKbd: true
+};
+
+export function setAppOptions(options?: AppOptions) {
+  defaultOptions = { ...defaultOptions, ...options };
+  return defaultOptions;
+}
+type GeneralKeys =
+  | "a"
+  | "b"
+  | "c"
+  | "d"
+  | "e"
+  | "f"
+  | "g"
+  | "h"
+  | "i"
+  | "j"
+  | "k"
+  | "l"
+  | "m"
+  | "n"
+  | "o"
+  | "p"
+  | "q"
+  | "r"
+  | "s"
+  | "t"
+  | "u"
+  | "v"
+  | "w"
+  | "x"
+  | "y"
+  | "z"
+  | "["
+  | "]"
+  | "-"
+  | "="
+  | ";"
+  | "'"
+  | ","
+  | "."
+  | "/"
+  | "\\"
+  | "`";
+export type PressModifiers = "Alt" | "Control" | "Meta" | "Shift";
+type ModifierKeys = PressModifiers | "CapsLock" | "Fn" | "Meta" | "NumLock" | "ScrollLock";
+type WhitespaceKeys = "Enter" | "Tab" | "Space";
+type NavigationKeys =
+  | "ArrowDown"
+  | "ArrowLeft"
+  | "ArrowRight"
+  | "ArrowUp"
+  | "End"
+  | "Home"
+  | "PageDown"
+  | "PageUp";
+type FunctionKeys =
+  | "F1"
+  | "F2"
+  | "F3"
+  | "F4"
+  | "F5"
+  | "F6"
+  | "F7"
+  | "F8"
+  | "F9"
+  | "F10"
+  | "F11"
+  | "F12"
+  | "F13"
+  | "F14"
+  | "F15"
+  | "F16"
+  | "F17"
+  | "F18"
+  | "F19"
+  | "F20";
+type NumericKeypadKeys =
+  | "NumpadDecimal"
+  | "NumpadEqual"
+  | "NumpadMultiply"
+  | "NumpadAdd"
+  | "NumpadDivide"
+  | "NumpadSubtract"
+  | "NumpadEnter"
+  | "0"
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9";
+type EditingKeys =
+  | "Backspace"
+  | "Clear"
+  | "Copy"
+  | "Cut"
+  | "Delete"
+  | "Insert"
+  | "Paste"
+  | "Find"
+  | "Undo";
+
+export type AllKeys =
+  | GeneralKeys
+  | ModifierKeys
+  | WhitespaceKeys
+  | NavigationKeys
+  | FunctionKeys
+  | NumericKeypadKeys
+  | EditingKeys;
+
+export const keyPressesState = $state<Array<AllKeys>>([]);
+export const resetKeyPressesState = () => {
+  keyPressesState.length = 0;
+};
+export type ShortcutParams = {
+  keys?: Array<AllKeys>;
+  modifiers?: false | Array<PressModifiers> | Array<Array<PressModifiers>>;
+  type?: "auto" | "callback" | "click" | "focus";
+  fn?: () => void;
+  options?: Options;
+};
+
+export const shortcuts: Action<HTMLElement, ShortcutParams | undefined> = (
+  node: HTMLElement,
+  {
+    type = "auto",
+    keys = [],
+    modifiers = void 0,
+    fn,
+    options: { generateKbd = defaultOptions.generateKbd } = {}
+  }: ShortcutParams | undefined = {}
+) => {
+  /* Attach a listener for keys when the node is attached.
+
+	Types of action
+	- Run callback if function [x]
+	- Set focus if element [x]
+	- Click if <a> or <button>
+
+	Based upon:
+	- Single key press [x]
+	- Multi key press [x]
+	- Ordered key press [x]
+	- Customizable Key presses[]
+
+	Visualise shortcuts on page []
+
+	*/
+
+  // Update type for auto
+  if (type == "auto") {
+    const tagName = node.tagName;
+    if (tagName == "A" || tagName == "BUTTON") {
+      type = "click";
+    } else if (fn) {
+      type = "callback";
+    } else {
+      type = "focus";
+    }
+  }
+
+  // Update keys if empty
+  if (!keys || keys?.length == 0) {
+    const textValue = node.textContent;
+    if (textValue && isAlphaNumeric(textValue[0])) {
+      // use the first char as the shortcut.
+      const firstCharVal = textValue[0];
+      keys = [firstCharVal.toLowerCase() as AllKeys];
+    } else if (node.tagName == "INPUT") {
+      const inputEle = node as HTMLInputElement;
+      const firstLabel = inputEle.labels?.item(0).textContent;
+      const firstCharVal = firstLabel?.[0] ?? "";
+      keys = [firstCharVal.toLowerCase() as AllKeys];
+    }
+  }
+
+  if (generateKbd) {
+    createKbd(keys, modifiers, node);
+  }
+
+  let handleKeyboardShortcut: (keyPresses: Array<AllKeys>) => void;
+  if (type == "callback" && fn) {
+    handleKeyboardShortcut = () => {
+      fn();
+    };
+  } else if (type == "focus") {
+    handleKeyboardShortcut = () => {
+      node.focus();
+    };
+  } else if (type == "click") {
+    handleKeyboardShortcut = () => {
+      node.click();
+    };
+  }
+
+  $effect(() => {
+    $effect(() => {
+      if (keys && checkEquivSequence(keyPressesState, keys) && checkModifiers(modifiers)) {
+        handleKeyboardShortcut(keyPressesState);
+        resetKeyPressesState();
+      }
+      return () => {};
+    });
+
+    return () => {
+      // cleanup
+    };
+  });
+};
+
+function checkEquivSequence(keyPressesState: Array<AllKeys>, keys: Array<AllKeys>) {
+  if (keys.length == 0) {
+    return false;
+  }
+
+  const matchLength = keys.length;
+  if (keyPressesState.length < matchLength) {
+    return false;
+  }
+
+  const lastKeysState = keyPressesState.slice(keyPressesState.length - matchLength);
+
+  for (const [idx, key] of keys.entries()) {
+    if (key != lastKeysState[idx]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Maps PressModifiers to keys of KeyboardEvent
+export const modifiersMapping: Record<
+  PressModifiers,
+  "altKey" | "ctrlKey" | "metaKey" | "shiftKey"
+> = {
+  Alt: "altKey",
+  Control: "ctrlKey",
+  Meta: "metaKey",
+  Shift: "shiftKey"
+};
+export const modifiersState: Record<PressModifiers, boolean> = $state({
+  Alt: false,
+  Control: false,
+  Meta: false,
+  Shift: false
+});
+function checkEquivModifiers(modifiers: PressModifiers[]): boolean {
+  for (const [modifier, value] of Object.entries(modifiersState) as [PressModifiers, boolean][]) {
+    if (value !== modifiers.includes(modifier)) return false;
+  }
+  return true;
+}
+function checkModifiers(modifiers: ShortcutParams["modifiers"]): boolean {
+  if (modifiers === void 0) return true;
+  // explicit `false` forbids the use of modifier keys
+  if (modifiers === false) {
+    if (Object.values(modifiersState).some((_) => _)) return false;
+    return true;
+  }
+
+  if (typeof modifiers[0] !== "string") {
+    // OR -> AND structure
+    const modifiers2 = modifiers as PressModifiers[][];
+    for (const ruleset of modifiers2) {
+      if (checkEquivModifiers(ruleset)) return true;
+    }
+    return false;
+  }
+  // AND structure
+  const ruleset = modifiers as PressModifiers[];
+  return checkEquivModifiers(ruleset);
+}
+
+function isAlphaNumeric(str: string) {
+  let code, i, len;
+
+  for (i = 0, len = str.length; i < len; i++) {
+    code = str.charCodeAt(i);
+    if (
+      !(code > 47 && code < 58) && // numeric (0-9)
+      !(code > 64 && code < 91) && // upper alpha (A-Z)
+      !(code > 96 && code < 123)
+    ) {
+      // lower alpha (a-z)
+      return false;
+    }
+  }
+  return true;
+}
+
+const arrowsReplacements = {
+  ArrowLeft: "←",
+  ArrowRight: "→",
+  ArrowUp: "↑",
+  ArrowDown: "↓"
+};
+function createKbd(keys: AllKeys[], modifiers: ShortcutParams["modifiers"], node: HTMLElement) {
+  let lastKbd: HTMLElement;
+  if (keys)
+    keys.forEach((key) => {
+      const kbd = document.createElement("kbd");
+      if (key in arrowsReplacements)
+        kbd.textContent = arrowsReplacements[key as keyof typeof arrowsReplacements];
+      else kbd.textContent = key;
+      if (lastKbd) {
+        lastKbd.after(kbd);
+      } else if (node.tagName == "INPUT") {
+        const inputEle = node as HTMLInputElement;
+        const firstLabel = inputEle.labels?.item(0);
+        firstLabel?.prepend(kbd);
+      } else {
+        node.prepend(kbd);
+      }
+      lastKbd = kbd;
+    });
+  if (!modifiers || !modifiers.length) return;
+  if (!(typeof modifiers[0] === "string")) modifiers = modifiers[0];
+  const modifiers2 = modifiers as PressModifiers[];
+  if (modifiers2.length) {
+    const span = document.createElement("span");
+    for (let i = 0; i < modifiers2.length; i++) {
+      const kbd = document.createElement("kbd");
+      kbd.textContent = modifiers2[i];
+      span.appendChild(kbd);
+      span.appendChild(document.createTextNode("+"));
+    }
+    if (node.tagName == "INPUT") {
+      const inputEle = node as HTMLInputElement;
+      const firstLabel = inputEle.labels?.item(0);
+      firstLabel?.prepend(span);
+    } else {
+      node.prepend(span);
+    }
+  }
+}

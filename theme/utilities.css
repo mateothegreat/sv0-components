@@ -1,0 +1,158 @@
+@layer utilities {
+  *::selection {
+    background-color: var(--selection-background);
+    color: var(--selection-foreground);
+  }
+
+  /* Modern scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-track);
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background: var(--scrollbar-thumb-active);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
+  }
+
+  /* Utility classes for scrollbar customization */
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-wide {
+    scrollbar-width: auto;
+  }
+
+  .scrollbar-wide::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  .debug-screens::before {
+    border: 2px solid rgba(255, 0, 230, 0.793);
+    border-radius: 5px;
+    box-shadow: none;
+    background-color: rgba(118, 118, 118, 0.297);
+    color: rgba(236, 230, 235, 0.793);
+    font-size: 11px;
+    font-family: monospace;
+    padding: 6px;
+    margin: 6px;
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+  }
+  .text-md {
+    font-size: var(--text-md);
+  }
+  .text-base {
+    font-size: var(--text-base);
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+  }
+}
+
+@layer base {
+  .custom-base {
+    margin: 123px;
+  }
+  [class~="border-b"] {
+    border-bottom-width: 4px;
+  }
+
+  .border {
+    border-color: var(--border);
+  }
+
+  .focus {
+    @apply focus-within:ring-ring focus-within:ring-2 focus-within:ring-offset-2;
+  }
+
+  .hover {
+    @apply transition-colors duration-500 ease-in-out hover:bg-[var(--hover-background)];
+  }
+
+  .selected {
+    @apply bg-[var(--selected-background)] text-[var(--selected-foreground)];
+  }
+
+  .glow {
+    filter: drop-shadow(0px 0px 5px oklch(0.41 0.22 267.96 / 0.42)) !important;
+  }
+
+  h1 {
+    @apply text-foreground text-3xl font-bold tracking-tighter;
+  }
+  h2 {
+    @apply text-foreground text-2xl font-semibold tracking-tighter;
+  }
+  h3 {
+    @apply text-foreground text-xl font-semibold tracking-tighter;
+  }
+  h4 {
+    @apply text-foreground text-lg font-semibold tracking-tighter;
+  }
+  h5 {
+    @apply text-foreground text-base font-semibold tracking-tighter;
+  }
+  h6 {
+    @apply text-foreground text-sm font-semibold tracking-tighter;
+  }
+}

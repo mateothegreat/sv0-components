@@ -1,0 +1,91 @@
+/**
+ * @file Tailwind CSS themes and utilities.
+ * @package @sv0/components
+ * @see https://sv0.dev/components
+ * @description This file is the entry point for the Tailwind CSS theme. It imports the utilities,
+ * components, base theme, light theme, dark theme, and other related utility files.
+ *
+ * Order of operations for loading the assets are as follows:
+ *
+ * | Order | Name         | Description                                                            |
+ * |-------|--------------|------------------------------------------------------------------------|
+ * | ▼ 1   | Utilities    | Atomic utility classes (e.g. text-xs, bg-red-500, flex)                |
+ * | ▼ 2   | Components   | Prebuilt UI components (e.g. buttons, cards, forms)                    |
+ * | ▼ 3   | Theme        | Base defaults and design tokens (e.g. --text-xs, --color-primary)      |
+ * | ▼ 4   | Theme-light  | Light theme overrides (when switched to light)                         |
+ * | ▼ 5   | Theme-dark   | Dark theme overrides (when switched to dark)                           |
+ */
+
+/**
+ * @description Import the main Tailwind CSS library.
+ */
+@import "tailwindcss";
+
+/**
+ * Loaded first, before anything else.
+ */
+@import "./utilities.css";
+@import "./components.css";
+
+/**
+ * @description Defaults that are applied if a theme does not override them.
+ * @note Precedence: second (lowest - base defaults).
+ */
+
+/**
+ * @description Light theme overrides.
+ * @note Precedence: first (highest - when switched to light)
+ */
+@import "./theme-light.css";
+
+/**
+ * @description Dark theme overrides.
+ * @note Precedence: first (highest - when switched to dark)
+ */
+@import "./theme-dark.css";
+@import "./theme.css";
+
+/**
+ * @description Import the animation library from tailwind.
+ */
+@import "tw-animate-css";
+
+/**
+ * @description Import the animations library.
+ */
+@import "./animations.css";
+
+/**
+ * @description Tells tailwind compiler to take in to account the files within this
+ * path and to keep their references to tailwind classes and utilities when tree-shaking.
+ */
+@source "../src/**/*.{ts,svelte}";
+
+/**
+ * @custom-variant dark
+ *
+ * Defines a custom Tailwind variant named `dark` that applies styles when the target element
+ * is inside a `.dark` context—either directly or nested within it.
+ *
+ * Uses the `:where()` pseudo-class to match `.dark` and its descendants **without increasing specificity**.
+ * This ensures that `dark:` utilities remain predictable and don't override other styles unintentionally.
+ *
+ * Selector breakdown:
+ *   - `&:where(.dark, .dark *)` matches:
+ *       - Any element that is a direct child of `.dark`
+ *       - Any element nested inside `.dark`
+ *   - `:where()` ensures zero specificity, preserving Tailwind’s layering and cascade behavior.
+ *
+ * Example usage:
+ *   ```html
+ *   <div class="dark">
+ *     <button class="dark:bg-gray-800 bg-white">Toggle</button>
+ *   </div>
+ *   ```
+ *
+ * Why this matters:
+ *   - Prevents specificity creep compared to `:is()`
+ *   - Enables theme-based styling without breaking utility precedence
+ *   - Plays nicely with Tailwind’s `media` and `class` strategies for dark mode
+ */
+@custom-variant dark (&:where(.dark, .dark *));

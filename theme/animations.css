@@ -1,0 +1,106 @@
+@layer utilities {
+  .ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .ripple::after {
+    content: "";
+    @apply absolute rounded-full bg-current opacity-20;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 10rem; /* tune based on element size */
+    height: 10rem;
+    pointer-events: none;
+  }
+
+  /* Trigger animation on focus or active */
+  .ripple:focus::after,
+  .ripple:active::after {
+    animation: ripple 700ms ease-out;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.25;
+    }
+    70% {
+      opacity: 0.15;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }
+
+  .wobble:focus {
+    animation: wobble 800ms ease-in-out both;
+  }
+
+  @keyframes wobble {
+    0% {
+      transform: translateX(0) rotate(0deg);
+    }
+    15% {
+      transform: translateX(-2%) rotate(-2deg);
+    }
+    30% {
+      transform: translateX(2%) rotate(2deg);
+    }
+    45% {
+      transform: translateX(-1.5%) rotate(-1.5deg);
+    }
+    60% {
+      transform: translateX(1.5%) rotate(1.5deg);
+    }
+    75% {
+      transform: translateX(-1%) rotate(-1deg);
+    }
+    100% {
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+
+  .bounce:focus {
+    animation: bounce 500ms cubic-bezier(0.28, 0.84, 0.42, 1);
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20%);
+    }
+  }
+
+  .shake:focus {
+    animation: shake 400ms ease-in-out both;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    15% {
+      transform: translateX(-3px);
+    }
+    30% {
+      transform: translateX(3px);
+    }
+    45% {
+      transform: translateX(-3px);
+    }
+    60% {
+      transform: translateX(3px);
+    }
+    75% {
+      transform: translateX(-2px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<script lang="ts">
+  import { cn } from "@sv0/components/utils/shadcn";
+  import { Dialog as SheetPrimitive } from "bits-ui";
+
+  let {
+    ref = $bindable(null),
+    class: className,
+    ...restProps
+  }: SheetPrimitive.TitleProps = $props();
+</script>
+
+<SheetPrimitive.Title
+  bind:ref
+  data-slot="sheet-title"
+  class={cn("text-foreground font-semibold", className)}
+  {...restProps} />

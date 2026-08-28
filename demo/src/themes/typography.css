@@ -1,0 +1,31 @@
+/**
+ * @description Import the "Rock Salt" font source files.
+ * @see https://fontsource.org/fonts/rock-salt
+ */
+@import "@fontsource/rock-salt";
+
+/**
+ * @description Import the "Nunito Sans" font source files.
+ * @see https://fontsource.org/fonts/nunito-sans
+ */
+@import "@fontsource-variable/nunito-sans";
+
+/**
+ * @description Import the "DSEG14 Modern" font source files.
+ * @see https://fontsource.org/fonts/dseg14-modern
+ */
+@import "@fontsource/dseg14-modern";
+
+/**
+ * @description Import the "Special Elite" font source files.
+ * @see https://fontsource.org/fonts/special-elite
+ */
+@import "@fontsource/special-elite";
+
+:root {
+  --font-family: nunito sans variable, sans-serif;
+  --font-typewriter: special elite, sans-serif;
+  --font-digital: dseg14 modern, sans-serif;
+  --font-poppins: poppins, sans-serif;
+  --font-handwriting: rock salt, cursive, sans-serif;
+}

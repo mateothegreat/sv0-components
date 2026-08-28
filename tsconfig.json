@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // Type checking options - REQUIRED for arktype
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    // Module resolution
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "lib": ["ES2022", "DOM"],
+
+    // Emit options
+    "verbatimModuleSyntax": false,
+    "sourceMap": false,
+    "noEmit": true,
+
+    // JavaScript support
+    "allowJs": true,
+    "checkJs": true,
+
+    // Interop options
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+
+    // Path mapping
+    "baseUrl": ".",
+    "paths": {
+      "@sv0/components/*": ["./src/*"],
+      "$src": ["./src"],
+      "$components": ["./src"],
+      "$hooks": ["src/attachments"],
+      "$lib": ["./src"],
+      "$utils": ["./src/lib/utils"],
+      "$types/*": ["./src/lib/utils/types/*"]
+    }
+  },
+  "include": ["./src", "demo/popover.test.ts"],
+  "exclude": ["**/tmp"]
+}
