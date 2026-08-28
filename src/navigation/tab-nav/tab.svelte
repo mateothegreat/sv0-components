@@ -39,12 +39,13 @@
 
 <div class={built.class} {...rest}>
   <div
-    class="shadow-mini-inset bg-tab-nav-background text-foreground/50 w-full text-sm leading-[0.01em] font-semibold">
+    class="bg-tab-nav-background text-foreground/50 w-full text-sm">
     <button
-      class="h-8 rounded-[4px] px-4 py-2 transition-all "
+      class="h-8 px-4 py-2 transition-all "
       class:shadow-mini={isSelected}
       class:rounded-lg={isSelected}
       class:text-foreground={isSelected}
+      class:font-semibold={isSelected}
       class:dark:bg-tab-nav-accent={isSelected}
       data-state={isSelected ? "active" : "inactive"}
       onclick={handleClick}

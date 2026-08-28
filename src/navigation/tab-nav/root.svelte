@@ -11,7 +11,7 @@
   let { selected = $bindable<T>(), class: className, ...rest }: Props = $props();
 
   const built = usePropsBuilder({ class: className, ...rest }).withClassMerge(
-    "flex items-center text-sm bg-tab-nav-background rounded-lg"
+    "flex w-full items-center text-sm bg-tab-nav-background rounded-lg overflow-hidden"
   );
 
   // Create context for child components
