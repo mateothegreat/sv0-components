@@ -7,22 +7,15 @@ export interface TabContext<T> {
   setSelected: (value: T) => void;
 }
 
-let context: ManagedContext<TabContext<any>>;
-
 export const getComponentContext = <T>(value?: T): ManagedContext<TabContext<T>> => {
-  if (context) {
-    return context as ManagedContext<TabContext<T>>;
-  }
-
-  context = createManagedContext<TabContext<T>>({
+  const ctx = createManagedContext<TabContext<T>>({
     key: TAB_CONTEXT_KEY,
     value: {
       selected: value as T,
       setSelected: (v: T) => {
-        context!.context.selected = v;
+        ctx.context.selected = v;
       }
     }
   });
-
-  return context;
+  return ctx;
 };

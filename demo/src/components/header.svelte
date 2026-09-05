@@ -15,11 +15,11 @@
 -->
 
 <script lang="ts">
+  import { themeState } from "$lib/theme-store.svelte";
   import { MoonIcon, SunIcon } from "@lucide/svelte";
   import { Badge } from "@sv0/components/display/badge";
   import { Button } from "@sv0/components/interactives/buttons/button/index.js";
   import { Menubar } from "@sv0/components/navigation/menus/bar";
-  import { toggleMode } from "mode-watcher";
   import { routes } from "./routes/routes.svelte";
 </script>
 
@@ -53,7 +53,7 @@
     </Menubar.Root>
   </div>
   <div class="flex gap-2">
-    <Button onclick={toggleMode} intent="outline" size="icon">
+    <Button onclick={() => themeState.toggleTheme()} intent="outline" size="icon">
       <SunIcon
         class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all! dark:scale-0 dark:-rotate-90" />
       <MoonIcon

@@ -46,7 +46,11 @@
   const handleClick = (e: MouseEvent): void => {
     if (ctx.disabled) return;
     e.preventDefault();
-    ctx.show();
+    if (ctx.open) {
+      ctx.hide();
+    } else {
+      ctx.show();
+    }
   };
 
   /**

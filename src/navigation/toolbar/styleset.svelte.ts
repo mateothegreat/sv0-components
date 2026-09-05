@@ -1,8 +1,6 @@
 import { createStyleSet } from "@sv0/stylesets";
 import { themeState } from "../../../demo/src/lib/theme-store.svelte";
 
-themeState.setTheme("base-dark");
-const currentTheme = $derived(themeState.current);
 /**
  * Toolbar styleset without theme manager. Theme will be provided at component level via
  * props.

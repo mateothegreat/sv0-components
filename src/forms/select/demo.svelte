@@ -58,8 +58,8 @@
       title="Single Select with Custom Trigger"
       description="Create rich, interactive select triggers with full control over rendering. Use snippets to customize both the trigger content and individual items with icons, colors, and complex layouts. The trigger snippet receives the current value, allowing dynamic rendering based on selection state."
       class="flex gap-4">
-      <Select.Root bind:value={single} class="w-40">
-        <Select.Trigger>
+      <Select.Root bind:value={single}>
+        <Select.Trigger class="w-40">
           {#snippet children(value?: Item)}
             {#if value}
               {@render item(value)}

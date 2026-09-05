@@ -18,8 +18,14 @@
    */
   const built = usePropsBuilder(rest).withDefaults({
     placement: "bottom-start",
-    offset: 4
+    offset: 33
   });
+
+  /**
+   * Reactive position + resolved side written by floating-ui and read by the template
+   * so that Svelte's own `style` binding never wipes the computed `left`/`top`.
+   */
+  let pos = $state<{ x: number; y: number; side: string }>({ x: 100, y: 100, side: "bottom" });
 
   /**
    * Handle positioning with floating-ui to position the select dropdown relative to the
@@ -41,15 +47,16 @@
     cleanup = autoUpdate(ctx.triggerElement, ctx.contentElement, async () => {
       if (!ctx.triggerElement || !ctx.contentElement) return;
 
-      const { x, y } = await computePosition(ctx.triggerElement, ctx.contentElement, {
-        placement: built.placement,
-        middleware: [offset(built.offset), flip({ fallbackAxisSideDirection: "end" })]
-      });
+      const { x, y, placement } = await computePosition(
+        ctx.triggerElement,
+        ctx.contentElement,
+        {
+          placement: built.placement,
+          middleware: [offset(built.offset), flip({ fallbackAxisSideDirection: "end" })]
+        }
+      );
 
-      Object.assign(ctx.contentElement.style, {
-        left: `${x}px`,
-        top: `${y}px`
-      });
+      pos = { x, y, side: placement.split("-")[0] };
     });
 
     return () => {
@@ -121,11 +128,12 @@
     aria-multiselectable={ctx.multiple ? "true" : undefined}
     data-state="open"
     data-placement={built.placement}
+    data-side={pos.side}
     tabindex={-1}
     onkeydown={handleKeyDown}
-    class="border-popover-border overflow-hidden rounded-md border-[1.75px] shadow-md"
-    style="position: absolute; z-index: 50; min-width: {ctx.triggerElement?.offsetWidth}px;"
-    {...rest}>
+    {...rest}
+    class={style()}
+    style={`position: absolute; z-index: 50; left: ${pos.x}px; top: ${pos.y}px; min-width: ${ctx.triggerElement?.offsetWidth}px;`}>
     {@render built.children?.()}
   </div>
 {/if}

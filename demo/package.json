@@ -61,7 +61,7 @@
     "clean": "rm -rf .svelte-kit rm -rf node_modules/.vite",
     "build": "pnpm run clean && vite build",
     "check": "svelte-check && tsc",
-    "dev": "pnpm run clean && vite dev",
+    "dev": "pnpm run clean && vite dev --port 5555",
     "dev:upgrade": "npx -y npm-check-updates -u -i",
     "test": "vitest",
     "test:coverage": "vitest --coverage",

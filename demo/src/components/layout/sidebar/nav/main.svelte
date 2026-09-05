@@ -16,7 +16,7 @@
    *
    * @param group - The route group to toggle.
    */
-  const toggleGroup = (group: any) => {
+  const toggleGroup = (group: RouteGroup): void => {
     group.active = !group.active;
   };
 
@@ -31,6 +31,12 @@
       }))
     );
   };
+
+  $effect(() => {
+    for (const group of routes) {
+      group.active = isSelected(group);
+    }
+  });
 </script>
 
 <Sidebar.Group>
@@ -38,15 +44,15 @@
   <Sidebar.Menu>
     {#each routes as group}
       <Collapsible.Root
-        open={isSelected(group)}
+        bind:open={group.active}
         onclick={() => {
           goto(`/components/${group.path}`);
           group.active = !group.active;
         }}>
-        {#snippet child({ props }: { props: any })}
+        {#snippet child({ props }: { props: Record<string, unknown> })}
           <Sidebar.MenuItem {...props}>
             <Sidebar.MenuButton onclick={() => toggleGroup(group)} tooltipContent={group.label}>
-              {#snippet child({ props }: { props: any })}
+              {#snippet child({ props }: { props: Record<string, unknown> })}
                 <button {...props}>
                   <group.icon />
                   <span>{group.label}</span>
@@ -55,7 +61,7 @@
             </Sidebar.MenuButton>
             {#if group.components?.length}
               <Collapsible.Trigger>
-                {#snippet child({ props }: { props: any })}
+                {#snippet child({ props }: { props: Record<string, unknown> })}
                   <Sidebar.MenuAction
                     {...props}
                     class=" justify-between data-[state=open]:rotate-90">

@@ -71,7 +71,7 @@ export const createManagedContext = <T>(
 };
 
 export const getManagedContext = <T>(key: symbol) => {
-  const context = getContext(key.toString());
+  const context = getContext(key);
   if (context) {
     return context;
   }
