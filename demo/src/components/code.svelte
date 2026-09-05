@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Code2 } from "@lucide/svelte";
+  import Code2 from "~icons/lucide/code2";
   import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
   import { createHighlighter, type Highlighter } from "shiki";
   import { onMount, type Snippet } from "svelte";

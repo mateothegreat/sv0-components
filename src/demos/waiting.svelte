@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Loader } from "@lucide/svelte";
   import { usePropsBuilder } from "@sv0/components/utils/props";
   import type { Component } from "svelte";
+  import Loader from "~icons/lucide/loader";
 
   let {
     ...rest

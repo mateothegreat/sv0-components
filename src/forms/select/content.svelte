@@ -18,14 +18,14 @@
    */
   const built = usePropsBuilder(rest).withDefaults({
     placement: "bottom-start",
-    offset: 33
+    offset: 5
   });
 
   /**
    * Reactive position + resolved side written by floating-ui and read by the template
    * so that Svelte's own `style` binding never wipes the computed `left`/`top`.
    */
-  let pos = $state<{ x: number; y: number; side: string }>({ x: 100, y: 100, side: "bottom" });
+  let pos = $state<{ x: number; y: number; side: string }>({ x: 0, y: 0, side: "bottom" });
 
   /**
    * Handle positioning with floating-ui to position the select dropdown relative to the

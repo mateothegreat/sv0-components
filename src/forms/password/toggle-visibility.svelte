@@ -1,6 +1,6 @@
 <script lang="ts">
-  import EyeIcon from "@lucide/svelte/icons/eye";
-  import EyeOffIcon from "@lucide/svelte/icons/eye-off";
+  import EyeIcon from "~icons/lucide/eye";
+  import EyeOffIcon from "~icons/lucide/eye-off";
   import { usePropsBuilder, type WithOptionalClass } from "@sv0/components/utils/props";
   import { usePassword } from "./state.svelte";
   import type { PasswordToggleVisibilityProps } from "./types";

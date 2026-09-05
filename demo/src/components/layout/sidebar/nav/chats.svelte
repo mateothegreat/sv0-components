@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+  import ChevronRightIcon from "~icons/lucide/chevron-right";
   import { Collapsible } from "@sv0/components/layout/collapsible";
   import { Sidebar } from "@sv0/components/layout/sidebar";
   import type { ComponentProps } from "svelte";

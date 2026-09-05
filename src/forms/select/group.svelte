@@ -20,8 +20,10 @@
       container: "default"
     })
   )}>
-  {#if built.label}
+  {#if typeof built.label === "string"}
     <Select.Label label={built.label} />
+  {:else if built.label}
+    <Select.Label>{@render built.label()}</Select.Label>
   {/if}
   <div>
     {@render built.children?.()}

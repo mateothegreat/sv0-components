@@ -1,10 +1,10 @@
-import ClockIcon from "@lucide/svelte/icons/clock";
-import FolderIcon from "@lucide/svelte/icons/folder";
-import LifeBuoyIcon from "@lucide/svelte/icons/life-buoy";
-import MessageCircleIcon from "@lucide/svelte/icons/message-circle";
-import SendIcon from "@lucide/svelte/icons/send";
-import Settings from "@lucide/svelte/icons/settings";
-import UsersIcon from "@lucide/svelte/icons/users";
+import ClockIcon from "~icons/lucide/clock";
+import FolderIcon from "~icons/lucide/folder";
+import LifeBuoyIcon from "~icons/lucide/life-buoy";
+import MessageCircleIcon from "~icons/lucide/message-circle";
+import SendIcon from "~icons/lucide/send";
+import Settings from "~icons/lucide/settings";
+import UsersIcon from "~icons/lucide/users";
 import type { Component } from "svelte";
 import { SvelteMap } from "svelte/reactivity";
 

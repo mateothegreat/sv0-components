@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { LayoutDashboard } from "@lucide/svelte";
-  import EllipsisIcon from "@lucide/svelte/icons/ellipsis";
-  import FolderIcon from "@lucide/svelte/icons/folder";
-  import ForwardIcon from "@lucide/svelte/icons/forward";
-  import Trash2Icon from "@lucide/svelte/icons/trash-2";
+  import LayoutDashboard from "~icons/lucide/layout-dashboard";
+  import EllipsisIcon from "~icons/lucide/ellipsis";
+  import FolderIcon from "~icons/lucide/folder";
+  import ForwardIcon from "~icons/lucide/forward";
+  import Trash2Icon from "~icons/lucide/trash-2";
   import { DropdownMenu } from "@sv0/components/display/dropdown-menu";
   import { Sidebar } from "@sv0/components/layout/sidebar";
   import { projects } from "../store.svelte";

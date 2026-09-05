@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Share2 } from "@lucide/svelte";
+  import Share2 from "~icons/lucide/share2";
   import { Dialog } from "@sv0/components/interactives/dialog";
   import type { Snippet } from "svelte";
 

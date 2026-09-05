@@ -45,8 +45,6 @@ export const trigger = createStyleSet({
     "cursor-pointer",
     // Transitions
     "transition-[color,background-color,border-color,box-shadow] duration-150 outline-none",
-    // Focus States
-    "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
     // Invalid States
     "aria-invalid:ring-destructive/20 aria-invalid:border-destructive",
     "dark:aria-invalid:ring-destructive/40",
@@ -55,7 +53,7 @@ export const trigger = createStyleSet({
     // Placeholder States
     "data-[placeholder]:text-muted-foreground",
     // Open State
-    "data-[state=open]:border-ring",
+    "data-[state=open]:border-ring/25 data-[state=open]:ring-ring/10 data-[state=open]:ring-[2px]",
     // SVG Icon Styles
     "[&_svg:not([class*='text-'])]:text-muted-foreground",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -234,6 +232,12 @@ export const item = createStyleSet({
       default: ["min-h-8 text-sm"],
       lg: ["min-h-9 text-base px-2.5 py-2"]
     },
+        spacing: {
+      none: "",
+      sm: "gap-0.5",
+      default: "gap-0.5",
+      lg: "gap-1"
+    },
     intent: {
       default: [],
       destructive: [
@@ -301,6 +305,12 @@ export const separator = createStyleSet({
     "bg-select-separator-color"
   ],
   variants: {
+    spacing: {
+      none: "",
+      sm: "gap-0.5",
+      default: "gap-0.5",
+      lg: "gap-1"
+    },
     orientation: {
       horizontal: "h-px w-auto data-[orientation=horizontal]:w-auto",
       vertical: "w-px h-full data-[orientation=vertical]:h-full"

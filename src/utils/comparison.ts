@@ -1,4 +1,4 @@
-export const compare = <T>(a: T, b: T, key?: string): boolean => {
+export const compare = (a: unknown, b: unknown, key?: string): boolean => {
   // === 1. Identity check
   if (a === b) return true;
 

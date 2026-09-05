@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { XIcon } from "@lucide/svelte";
+  import XIcon from "~icons/lucide/x";
   import { Dialog } from ".";
 </script>
 

@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { Eye, EyeOff, Link } from "@lucide/svelte";
+  import Eye from "~icons/lucide/eye";
+import EyeOff from "~icons/lucide/eye-off";
+import Link from "~icons/lucide/link";
   import { Password } from "@sv0/components/forms/password";
   import type { Share } from "./types";
   import { ShareVisibility } from "./types";

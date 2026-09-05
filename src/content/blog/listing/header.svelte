@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ArrowRight } from "@lucide/svelte";
+  import ArrowRight from "~icons/lucide/arrow-right";
   import { Button } from "@sv0/components/interactives/buttons/button";
   import { usePropsBuilder, type WithChildren } from "@sv0/components/utils/props";
   import type { Snippet } from "svelte";

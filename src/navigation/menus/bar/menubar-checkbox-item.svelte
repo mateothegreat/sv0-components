@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { CheckIcon, MinusIcon } from "@lucide/svelte";
+  import CheckIcon from "~icons/lucide/check";
+import MinusIcon from "~icons/lucide/minus";
   import { cn, type WithoutChildrenOrChild } from "@sv0/components/utils/shadcn";
   import { Menubar as MenubarPrimitive } from "bits-ui";
   import type { Snippet } from "svelte";

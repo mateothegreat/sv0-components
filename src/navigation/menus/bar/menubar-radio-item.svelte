@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CircleIcon from "@lucide/svelte/icons/circle";
+  import CircleIcon from "~icons/lucide/circle";
   import { cn, type WithoutChild } from "@sv0/components/utils/shadcn";
   import { Menubar as MenubarPrimitive } from "bits-ui";
 

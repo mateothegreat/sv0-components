@@ -1,19 +1,19 @@
 <script lang="ts" generics="T">
   import { usePropsBuilder } from "@sv0/components/utils/props";
   import { provideSelect, type SelectState } from "./state.svelte";
-  import type { SelectRootProps, SelectValue } from "./types";
+  import type { SelectRootProps } from "./types";
 
   let {
     value = $bindable(),
     ctx = $bindable(),
     ...rest
-  }: SelectRootProps<SelectValue<T>> & {
-    ctx?: SelectState<SelectValue<T>>;
+  }: SelectRootProps<T> & {
+    ctx?: SelectState<T>;
   } = $props();
 
   const built = usePropsBuilder(rest).withClassMerge();
 
-  ctx = provideSelect({
+  ctx = provideSelect<T>({
     disabled: built.disabled,
     required: built.required,
     name: built.name,

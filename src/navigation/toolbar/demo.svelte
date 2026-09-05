@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Sparkles } from "@lucide/svelte";
+  import Sparkles from "~icons/lucide/sparkles";
   import { Demo } from "@sv0/components/demos";
   import { Toolbar } from "./index.js";
 

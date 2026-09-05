@@ -1,14 +1,11 @@
 <script lang="ts">
-  import {
-    CircleCheck,
-    CircleX,
-    FileText,
-    Info,
-    Lightbulb,
-    TriangleAlert,
-    X,
-    type Component
-  } from "@lucide/svelte";
+  import CircleCheck from "~icons/lucide/circle-check";
+import CircleX from "~icons/lucide/circle-x";
+import FileText from "~icons/lucide/file-text";
+import Info from "~icons/lucide/info";
+import Lightbulb from "~icons/lucide/lightbulb";
+import TriangleAlert from "~icons/lucide/triangle-alert";
+import X from "~icons/lucide/x";
   import {
     usePropsBuilder,
     type WithChildren,

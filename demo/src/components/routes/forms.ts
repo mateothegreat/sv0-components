@@ -1,4 +1,4 @@
-import { RectangleEllipsis } from "@lucide/svelte";
+import RectangleEllipsis from "~icons/lucide/rectangle-ellipsis";
 import FieldDemo from "@sv0/components/forms/field/demo.svelte";
 import InputDemo from "@sv0/components/forms/input/demo.svelte";
 import PasswordDemo from "@sv0/components/forms/password/demo.svelte";

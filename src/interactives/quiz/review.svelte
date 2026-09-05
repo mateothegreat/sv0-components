@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { CircleCheck, CircleX } from "@lucide/svelte";
+  import CircleCheck from "~icons/lucide/circle-check";
+import CircleX from "~icons/lucide/circle-x";
   import { Card } from "@sv0/components/display/card";
   import { Button } from "@sv0/components/interactives/buttons/button";
   import { Config } from "@sv0/components/interactives/quiz/types";

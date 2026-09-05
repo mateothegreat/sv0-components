@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { CheckIcon, CopyIcon, XIcon } from "@lucide/svelte";
+  import CheckIcon from "~icons/lucide/check";
+import CopyIcon from "~icons/lucide/copy";
+import XIcon from "~icons/lucide/x";
   import { UseClipboard } from "@sv0/components/attachments/clipboard.svelte";
   import { usePropsBuilder } from "@sv0/components/utils/props";
   import { fade } from "svelte/transition";

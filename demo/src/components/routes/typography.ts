@@ -1,6 +1,6 @@
 import type { RouteGroup } from "./routes.svelte";
 
-import { Type } from "@lucide/svelte";
+import Type from "~icons/lucide/type";
 import TypographyDemo from "@sv0/components/typography/demo.svelte";
 
 export const nav: RouteGroup = {

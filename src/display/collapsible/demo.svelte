@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { ChevronDown, ChevronUp } from "@lucide/svelte";
+  import ChevronDown from "~icons/lucide/chevron-down";
+import ChevronUp from "~icons/lucide/chevron-up";
   import { Demo } from "@sv0/components/demos";
   import { Collapsible } from "./index.js";
 

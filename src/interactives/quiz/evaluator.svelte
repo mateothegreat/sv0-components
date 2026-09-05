@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { CircleCheck, CircleQuestionMark, CircleX, ThumbsDown, ThumbsUp } from "@lucide/svelte";
+  import CircleCheck from "~icons/lucide/circle-check";
+import CircleQuestionMark from "~icons/lucide/circle-question-mark";
+import CircleX from "~icons/lucide/circle-x";
+import ThumbsDown from "~icons/lucide/thumbs-down";
+import ThumbsUp from "~icons/lucide/thumbs-up";
   import { usePropsBuilder, type WithOptionalChildren } from "@sv0/components/utils/props";
   import { getContext } from "svelte";
   import { CONTEXT_KEY, type Instance } from "./context.svelte";

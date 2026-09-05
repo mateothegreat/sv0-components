@@ -21,7 +21,7 @@
 </script>
 
 <script lang="ts">
-  import XIcon from "@lucide/svelte/icons/x";
+  import XIcon from "~icons/lucide/x";
   import { cn, type WithoutChildrenOrChild } from "@sv0/components/utils/shadcn";
   import { Dialog as SheetPrimitive } from "bits-ui";
   import type { Snippet } from "svelte";

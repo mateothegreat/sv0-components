@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { FileCode2, GithubIcon } from "@lucide/svelte";
+  import FileCode2 from "~icons/lucide/file-code2";
+import GithubIcon from "~icons/lucide/github";
 
   let { file } = $props();
 </script>

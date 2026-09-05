@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Demo } from '@sv0/components/demos';
 	import { Icon } from './index.js';
-	import { Home, Settings, User } from '@lucide/svelte';
+	import Home from "~icons/lucide/home";
+import Settings from "~icons/lucide/settings";
+import User from "~icons/lucide/user";
 </script>
 
 <Demo.Root title="Icons" description="Icon components using Lucide icons.">

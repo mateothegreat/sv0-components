@@ -1,14 +1,12 @@
 <script lang="ts">
-  import {
-    Apple,
-    Banana,
-    ChefHat,
-    Cherry,
-    ChevronDown,
-    SquareStack,
-    Timer,
-    TimerOff
-  } from "@lucide/svelte";
+  import Apple from "~icons/lucide/apple";
+import Banana from "~icons/lucide/banana";
+import ChefHat from "~icons/lucide/chef-hat";
+import Cherry from "~icons/lucide/cherry";
+import ChevronDown from "~icons/lucide/chevron-down";
+import SquareStack from "~icons/lucide/square-stack";
+import Timer from "~icons/lucide/timer";
+import TimerOff from "~icons/lucide/timer-off";
   import { Demo } from "@sv0/components/demos";
   import { Badge } from "@sv0/components/display/badge";
   import {

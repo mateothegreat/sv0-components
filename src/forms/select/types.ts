@@ -6,11 +6,34 @@ import type {
 } from "@sv0/components/utils/props";
 import type { WithElementAttrs } from "@sv0/components/utils/types/modifiers";
 import type { VariantProps } from "@sv0/stylesets";
+import type { Snippet } from "svelte";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import type { SelectState } from "./state.svelte";
 import type { contentStyleSet, group, item, label, root, separator, trigger } from "./styleset";
 
-export type SelectValue<T> = T[] | T | undefined;
+/**
+ * A `<Select.Root>`'s value type. `T` is expressed *directly* by the consumer as the
+ * shape of the store they bind to `value` — a single item type (e.g. `Item | undefined`)
+ * for single-select, or an array type (e.g. `Item[]`) for multi-select. There is no
+ * separate discriminant: `T` already carries that information, so this alias is just a
+ * readability shorthand for "T or unset".
+ */
+export type SelectValue<T> = T | undefined;
+
+/**
+ * Extracts the *single item* type from a `<Select.Root>`'s value type `T`. If `T` is an
+ * array (multi-select), yields the element type; otherwise yields `NonNullable<T>`
+ * (single-select).
+ *
+ * @example
+ *
+ * ```ts
+ * ItemOf<Item | undefined> // Item
+ * ItemOf<Item[]>            // Item
+ * ItemOf<Item[] | undefined> // Item
+ * ```
+ */
+export type ItemOf<T> = T extends readonly (infer U)[] ? U : NonNullable<T>;
 
 /**
  * Props for the `<Select.Root />` component.
@@ -22,16 +45,17 @@ export type SelectRootProps<T> = {
   placeholder?: string;
 
   /**
-   * The selected value(s).
+   * The selected value(s). Its type is whatever `T` the consumer chose — an item type
+   * for single-select, or an array type for multi-select. No wrapper, no discriminant.
    *
    * @bindable
    */
-  value?: SelectValue<T>;
+  value?: T;
 
   /**
    * Callback when value changes.
    */
-  onValueChange?: (value: SelectValue<T>) => void;
+  onValueChange?: (value: T | undefined) => void;
 
   /**
    * Whether the select is disabled.
@@ -67,7 +91,10 @@ export type SelectRootProps<T> = {
   onOpenChange?: (open: boolean) => void;
 
   /**
-   * Whether to allow multiple selections.
+   * Whether the select accumulates selections (multi) or replaces on select (single).
+   * This is a pure *runtime* behavior toggle; the *type* of `value` is dictated by `T`
+   * itself. Typing `value` as `Item[]` implies multi-select; typing it as
+   * `Item | undefined` implies single-select.
    *
    * @defaultValue false
    */
@@ -83,7 +110,7 @@ export type SelectRootProps<T> = {
   WithElementAttrs<HTMLDivElement>;
 
 export type SelectTriggerProps<T> = SelectTriggerStyles &
-  WithChildren<[SelectValue<T>, SelectState<T>]> &
+  WithChildren<[T | undefined, SelectState<T>]> &
   WithOptionalClass &
   Omit<HTMLButtonAttributes, "children">;
 
@@ -146,7 +173,7 @@ export type SelectContentStyles = VariantProps<typeof contentStyleSet>;
  * @category Select Styles
  */
 export type SelectItemProps<T = unknown> = {
-  value: SelectValue<T>;
+  value: ItemOf<T>;
   label?: string;
   disabled?: boolean;
 } & VariantProps<typeof item> &
@@ -160,7 +187,13 @@ export type SelectItemProps<T = unknown> = {
  *
  * @category Select Styles
  */
-export type SelectGroupProps = { label?: string } & VariantProps<typeof group> &
+export type SelectGroupProps = {
+  /**
+   * The group's label. Either a plain string (rendered as-is inside `<Select.Label>`)
+   * or a snippet for full markup control.
+   */
+  label?: string | Snippet;
+} & VariantProps<typeof group> &
   WithOptionalClass &
   WithChildren &
   WithElementAttrs<HTMLDivElement>;
@@ -189,7 +222,7 @@ export const SelectItemSize = {
 
 export type SelectItem<T = unknown> = {
   ref: HTMLDivElement;
-  value: SelectValue<T>;
+  value: ItemOf<T>;
 };
 export type SelectItemSize = (typeof SelectItemSize)[keyof typeof SelectItemSize];
 

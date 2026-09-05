@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Plus } from "@lucide/svelte";
+  import Plus from "~icons/lucide/plus";
   import { Demo } from "@sv0/components/demos";
   import { Button } from ".";
 </script>

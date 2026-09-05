@@ -7,7 +7,7 @@
     routes,
     type RouteGroup
   } from "$components/routes/routes.svelte";
-  import { ChevronRightIcon } from "@lucide/svelte";
+  import ChevronRightIcon from "~icons/lucide/chevron-right";
   import { Collapsible } from "@sv0/components/display/collapsible";
   import { Sidebar } from "@sv0/components/layout/sidebar";
 

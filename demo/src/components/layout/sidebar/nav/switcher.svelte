@@ -1,9 +1,9 @@
 <script lang="ts">
-  import AudioWaveformIcon from "@lucide/svelte/icons/audio-waveform";
-  import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
-  import CommandIcon from "@lucide/svelte/icons/command";
-  import GalleryVerticalEndIcon from "@lucide/svelte/icons/gallery-vertical-end";
-  import PlusIcon from "@lucide/svelte/icons/plus";
+  import AudioWaveformIcon from "~icons/lucide/audio-waveform";
+  import ChevronsUpDownIcon from "~icons/lucide/chevrons-up-down";
+  import CommandIcon from "~icons/lucide/command";
+  import GalleryVerticalEndIcon from "~icons/lucide/gallery-vertical-end";
+  import PlusIcon from "~icons/lucide/plus";
   import { DropdownMenu } from "@sv0/components/display/dropdown-menu";
   import { Sidebar } from "@sv0/components/layout/sidebar";
 

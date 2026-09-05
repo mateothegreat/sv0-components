@@ -1,5 +1,8 @@
 <script lang="ts">
-  import { Apple, Banana, Cherry, ChevronDown } from "@lucide/svelte";
+  import Apple from "~icons/lucide/apple";
+import Banana from "~icons/lucide/banana";
+import Cherry from "~icons/lucide/cherry";
+import ChevronDown from "~icons/lucide/chevron-down";
   import { Demo } from "@sv0/components/demos";
   import { Select } from "@sv0/components/forms/select";
   import { Button } from "@sv0/components/interactives/buttons/button";
@@ -66,7 +69,7 @@
             {:else}
               <div class="flex items-center gap-2 text-slate-400">
                 <Banana class="text-yellow-300" />
-                <span>{value?.label || "Select a fruit.."}</span>
+                <span>Select a fruit..</span>
               </div>
             {/if}
             <ChevronDown class="text-slate-500" />
@@ -97,7 +100,7 @@
           </Select.Group>
         </Select.Content>
       </Select.Root>
-      <div class="-mt-0.25">
+      <div class="-mt-px">
         <Button
           intent="outline"
           onclick={() => {
@@ -148,7 +151,7 @@
       title="Large Size Variant"
       description="Spacious select controls with increased padding and larger text, ideal for prominent form fields, hero sections, or touch-first interfaces where larger tap targets improve usability.">
       <Select.Root bind:value={largeValue} placeholder="Select an option">
-        <Select.Trigger size="lg" width="auto">
+        <Select.Trigger size="lg" width="fit">
           {#snippet children(value)}
             <span>{value || "Large select"}</span>
             <span class="ml-2">▼</span>

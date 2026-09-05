@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ArrowRight } from "@lucide/svelte";
+  import ArrowRight from "~icons/lucide/arrow-right";
   import { Avatar } from "../../avatar";
   import { Button } from "../../interactives/button";
   import type { HeroData } from "./types";

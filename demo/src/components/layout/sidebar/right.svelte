@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Sidebar } from "@sv0/components/layout/sidebar";
-  import PlusIcon from "@lucide/svelte";
+  import PlusIcon from "~icons/lucide/plus";
   import type { ComponentProps } from "svelte";
   import Calendars from "./calendars.svelte";
   import DatePicker from "./date-picker.svelte";

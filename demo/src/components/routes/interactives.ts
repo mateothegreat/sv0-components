@@ -1,4 +1,4 @@
-import { MousePointerClick } from "@lucide/svelte";
+import MousePointerClick from "~icons/lucide/mouse-pointer-click";
 import type { RouteGroup } from "./routes.svelte";
 
 import ButtonDemo from "@sv0/components/interactives/buttons/button/demo.svelte";

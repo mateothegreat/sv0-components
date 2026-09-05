@@ -16,7 +16,8 @@
 
 <script lang="ts">
   import { themeState } from "$lib/theme-store.svelte";
-  import { MoonIcon, SunIcon } from "@lucide/svelte";
+  import MoonIcon from "~icons/lucide/moon";
+import SunIcon from "~icons/lucide/sun";
   import { Badge } from "@sv0/components/display/badge";
   import { Button } from "@sv0/components/interactives/buttons/button/index.js";
   import { Menubar } from "@sv0/components/navigation/menus/bar";

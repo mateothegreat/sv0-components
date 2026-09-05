@@ -1,6 +1,6 @@
 import type { RouteGroup } from "./routes.svelte";
 
-import { Navigation } from "@lucide/svelte";
+import Navigation from "~icons/lucide/navigation";
 import MenuDemo from "@sv0/components/navigation/menus/menu/demo.svelte";
 import TabNavDemo from "@sv0/components/navigation/tab-nav/demo.svelte";
 import ToolbarDemo from "@sv0/components/navigation/toolbar/demo.svelte";

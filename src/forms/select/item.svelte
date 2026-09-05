@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Check } from "@lucide/svelte";
+  import Check from "~icons/lucide/check";
   import { usePropsBuilder } from "@sv0/components/utils/props";
   import { onMount } from "svelte";
   import { twMerge } from "tailwind-merge";

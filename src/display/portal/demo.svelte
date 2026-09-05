@@ -5,7 +5,7 @@
   import { Button } from "@sv0/components/interactives/buttons/button";
   import { createPortalManager, type PortalInstance } from "./api.svelte";
 
-  import { CircleFadingPlus } from "@lucide/svelte";
+  import CircleFadingPlus from "~icons/lucide/circle-fading-plus";
   import Example from "./example.svelte";
   import Portal from "./root.svelte";
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Clock } from "@lucide/svelte";
+  import Clock from "~icons/lucide/clock";
   import { cn } from "@sv0/components/utils/shadcn";
 
   let {

@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { Eye, EyeOff, Info, Link, XIcon } from "@lucide/svelte";
+  import Eye from "~icons/lucide/eye";
+import EyeOff from "~icons/lucide/eye-off";
+import Info from "~icons/lucide/info";
+import Link from "~icons/lucide/link";
+import XIcon from "~icons/lucide/x";
   import { Dialog } from "@sv0/components/interactives/dialog";
   import { Password } from "@sv0/components/password";
   import { ShareVisibility, type Share, type ShareProps } from "@sv0/components/share/types";

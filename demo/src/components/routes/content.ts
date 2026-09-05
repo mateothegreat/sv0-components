@@ -8,7 +8,7 @@ import EmptyStateDemo from "@sv0/components/display/empty-state/demo.svelte";
 import TagDemo from "@sv0/components/display/tag/demo.svelte";
 import AccordionDemo from "@sv0/components/interactives/accordion/demo.svelte";
 
-import { BookMarked } from "@lucide/svelte";
+import BookMarked from "~icons/lucide/book-marked";
 import type { RouteGroup } from "./routes.svelte";
 
 export const nav: RouteGroup = {

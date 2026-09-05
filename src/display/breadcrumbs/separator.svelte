@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+  import ChevronRightIcon from "~icons/lucide/chevron-right";
   import { cn, type WithElementRef } from "@sv0/components/utils/shadcn";
   import type { HTMLLiAttributes } from "svelte/elements";
 

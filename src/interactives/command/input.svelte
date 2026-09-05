@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SearchIcon from "@lucide/svelte/icons/search";
+  import SearchIcon from "~icons/lucide/search";
   import { cn } from "@sv0/components/utils/shadcn";
   import { Command as CommandPrimitive } from "bits-ui";
 

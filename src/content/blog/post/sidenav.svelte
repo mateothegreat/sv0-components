@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ArrowUp } from "@lucide/svelte";
+  import ArrowUp from "~icons/lucide/arrow-up";
   import { scrollToTop } from "@sv0/components/utils/scroll";
   import { cn } from "@sv0/components/utils/shadcn";
   import type { Snippet } from "svelte";

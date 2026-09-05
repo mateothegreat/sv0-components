@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+  import ChevronDownIcon from "~icons/lucide/chevron-down";
   import { cn, type WithoutChild } from "@sv0/components/utils/shadcn";
   import { Accordion as AccordionPrimitive } from "bits-ui";
 

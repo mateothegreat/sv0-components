@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { CheckIcon, X } from "@lucide/svelte";
+  import CheckIcon from "~icons/lucide/check";
+import X from "~icons/lucide/x";
   import {
     Question,
     QuestionState,

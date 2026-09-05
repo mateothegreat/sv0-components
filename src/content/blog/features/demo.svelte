@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CirclePlus } from "@lucide/svelte";
+  import CirclePlus from "~icons/lucide/circle-plus";
   import { Feature, type FeatureItem } from "@sv0/components/content/blog/features";
   import Features from "./features.svelte";
 

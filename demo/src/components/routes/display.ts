@@ -1,4 +1,4 @@
-import { Monitor } from "@lucide/svelte";
+import Monitor from "~icons/lucide/monitor";
 import AvatarDemo from "@sv0/components/display/avatar/demo.svelte";
 import BadgeDemo from "@sv0/components/display/badge/demo.svelte";
 import BreadcrumbsDemo from "@sv0/components/display/breadcrumbs/demo.svelte";

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Calendar1, Eye } from "@lucide/svelte";
+  import Calendar1 from "~icons/lucide/calendar1";
+import Eye from "~icons/lucide/eye";
   import type { TagLineProps } from "@sv0/components/blog/post/types";
   import { formatDate } from "@sv0/components/utils/dates";
   import { cn } from "@sv0/components/utils/shadcn";
