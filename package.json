@@ -1590,7 +1590,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && cp -r src dist && cp package.json dist",
-    "release": "rm -rf dist && npm --no-git-tag-version --workspaces=false version from-git && cp -r src dist && cp package.json dist && pnpm publish --no-git-checks --access public",
+    "release": "rm -rf dist && pnpm --no-git-tag-version --workspaces=false version from-git && cp -r src dist && cp package.json dist && cd dist &&pnpm publish --no-git-checks --access public",
     "update": "bin/update-package package.json src",
     "check": "svelte-check && tsc",
     "dev": "vite",
@@ -1603,5 +1603,6 @@
     "demo": "cd demo && pnpm dev"
   },
   "type": "module",
-  "version": "0.22.0"
+  "version": "0.22.0",
+  "packageManager": "pnpm@12.3.4"
 }
