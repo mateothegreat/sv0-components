@@ -1,6 +1,7 @@
 <script lang="ts" generics="T">
   import { usePropsBuilder } from "@sv0/components/utils/props";
   import { onMount } from "svelte";
+  import ChevronDown from "~icons/lucide/chevron-down";
   import { useSelect } from "./state.svelte";
   import { trigger } from "./styleset";
   import type { SelectTriggerProps } from "./types";
@@ -125,10 +126,15 @@
       state: ctx.open ? "open" : "closed"
     },
     built.class
-  )}>
-  {#if built.children}
-    {@render built.children(ctx.value, ctx)}
-  {:else}
-    {displayValue()}
-  {/if}
+  )}> 
+  <div class="flex items-center justify-between">
+    {#if built.children}
+      {@render built.children(ctx.value, ctx)}
+    {:else}
+        {displayValue()}
+      {/if}
+    </div>
+    <div class="flex items-center justify-end">
+      <ChevronDown class="w-4 h-4" />
+    </div>
 </button>

@@ -1,12 +1,4 @@
 <script lang="ts">
-  import Apple from "~icons/lucide/apple";
-import Banana from "~icons/lucide/banana";
-import ChefHat from "~icons/lucide/chef-hat";
-import Cherry from "~icons/lucide/cherry";
-import ChevronDown from "~icons/lucide/chevron-down";
-import SquareStack from "~icons/lucide/square-stack";
-import Timer from "~icons/lucide/timer";
-import TimerOff from "~icons/lucide/timer-off";
   import { Demo } from "@sv0/components/demos";
   import { Badge } from "@sv0/components/display/badge";
   import {
@@ -16,6 +8,13 @@ import TimerOff from "~icons/lucide/timer-off";
   } from "@sv0/components/forms/select/api/types";
   import { Button } from "@sv0/components/interactives/buttons/button";
   import { onMount, type Component } from "svelte";
+  import Apple from "~icons/lucide/apple";
+  import Banana from "~icons/lucide/banana";
+  import ChefHat from "~icons/lucide/chef-hat";
+  import Cherry from "~icons/lucide/cherry";
+  import SquareStack from "~icons/lucide/square-stack";
+  import Timer from "~icons/lucide/timer";
+  import TimerOff from "~icons/lucide/timer-off";
   import { SelectState } from "../state.svelte";
   import type { SelectValue } from "../types";
   import { createSelectInstance, type SelectInstance } from "./instance.svelte";
@@ -458,10 +457,6 @@ import TimerOff from "~icons/lucide/timer-off";
         </span>
       </div>
     {/if}
-    <!-- 
-      Render the down arrow icon for the trigger button.
-    -->
-    <ChevronDown class="size-3.5" />
   </div>
 {/snippet}
 

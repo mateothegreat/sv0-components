@@ -1,12 +1,11 @@
 <script lang="ts">
-  import Apple from "~icons/lucide/apple";
-import Banana from "~icons/lucide/banana";
-import Cherry from "~icons/lucide/cherry";
-import ChevronDown from "~icons/lucide/chevron-down";
   import { Demo } from "@sv0/components/demos";
   import { Select } from "@sv0/components/forms/select";
   import { Button } from "@sv0/components/interactives/buttons/button";
   import type { Component } from "svelte";
+  import Apple from "~icons/lucide/apple";
+  import Banana from "~icons/lucide/banana";
+  import Cherry from "~icons/lucide/cherry";
   import ImperativeDemo from "./api/demo.svelte";
 
   type Item = {
@@ -72,7 +71,6 @@ import ChevronDown from "~icons/lucide/chevron-down";
                 <span>Select a fruit..</span>
               </div>
             {/if}
-            <ChevronDown class="text-slate-500" />
           {/snippet}
         </Select.Trigger>
         <Select.Content>
