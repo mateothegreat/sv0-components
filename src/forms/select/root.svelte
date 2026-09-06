@@ -27,6 +27,7 @@
   // Sync external changes -> internal state.
   $effect(() => {
     ctx.value = value;
+    built.onValueChange?.(value);
   });
 </script>
 
@@ -55,7 +56,7 @@
     <input
       type="hidden"
       name={built.name}
-      value={currentValue as string}
+      value={currentValue}
       disabled={built.disabled}
       required={built.required} />
   {/if}
