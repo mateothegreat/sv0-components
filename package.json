@@ -1600,16 +1600,5 @@
   },
   "type": "module",
   "version": "0.25.0",
-  "packageManager": "pnpm@12.3.4",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@tailwindcss/oxide",
-      "edgedriver",
-      "esbuild",
-      "geckodriver",
-      "protobufjs",
-      "svelte-preprocess"
-    ]
-  }
+  "packageManager": "pnpm@12.3.4"
 }

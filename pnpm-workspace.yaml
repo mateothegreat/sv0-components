@@ -1,0 +1,12 @@
+# pnpm v12+ reads dep-graph settings from `pnpm-workspace.yaml` only. The
+# `packages:` field is omitted because this repo is a single package, not a
+# workspace — but this file is still the settings home. See https://pnpm.io/settings.
+
+allowBuilds:
+  "@parcel/watcher": true
+  "@tailwindcss/oxide": true
+  edgedriver: true
+  esbuild: true
+  geckodriver: true
+  protobufjs: true
+  svelte-preprocess: true
