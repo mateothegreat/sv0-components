@@ -2,6 +2,7 @@
   "svelte": "./src/index.ts",
   "dependencies": {
     "@fontsource/rock-salt": "^5.3.0",
+    "@sv0/stylesets": "^0.2.0",
     "arktype": "^2.2.3",
     "runed": "^0.37.1",
     "svelte-toolbelt": "^0.10.6"
@@ -11,9 +12,6 @@
     "@floating-ui/dom": "^1.8.0",
     "@iconify/svelte": "^5.2.2",
     "@internationalized/date": "^3.12.3",
-    "@sv0/common": "workspace:*",
-    "@sv0/packaging": "workspace:*",
-    "@sv0/stylesets": "workspace:*",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/svelte-table": "^9.2.3",
@@ -1590,7 +1588,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && cp -r src dist && cp package.json dist",
-    "release": "pnpm --no-git-tag-version --workspaces=false version from-git && pnpm build && cd dist && pnpm publish --no-git-checks --access public",
+    "release": "npm --no-git-tag-version --workspaces=false version from-git && pnpm build && cd dist && pnpm publish --no-git-checks --access public",
     "update": "bin/update-package package.json src",
     "check": "svelte-check && tsc",
     "dev": "vite",
@@ -1603,6 +1601,6 @@
     "demo": "cd demo && pnpm dev"
   },
   "type": "module",
-  "version": "0.22.0",
+  "version": "0.25.0",
   "packageManager": "pnpm@12.3.4"
 }
