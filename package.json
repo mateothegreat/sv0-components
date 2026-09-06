@@ -1590,7 +1590,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && cp -r src dist && cp package.json dist",
-    "release": "rm -rf dist && pnpm --no-git-tag-version --workspaces=false version from-git && cp -r src dist && cp package.json dist && cd dist &&pnpm publish --no-git-checks --access public",
+    "release": "pnpm --no-git-tag-version --workspaces=false version from-git && pnpm build && cd dist && pnpm publish --no-git-checks --access public",
     "update": "bin/update-package package.json src",
     "check": "svelte-check && tsc",
     "dev": "vite",
