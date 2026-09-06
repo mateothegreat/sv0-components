@@ -1,13 +1,11 @@
 {
   "svelte": "./src/index.ts",
-  "dependencies": {
+  "devDependencies": {
     "@fontsource/rock-salt": "^5.3.0",
     "@sv0/stylesets": "^0.2.0",
     "arktype": "^2.2.3",
     "runed": "^0.37.1",
-    "svelte-toolbelt": "^0.10.6"
-  },
-  "devDependencies": {
+    "svelte-toolbelt": "^0.10.6",
     "@faker-js/faker": "^10.6.0",
     "@floating-ui/dom": "^1.8.0",
     "@iconify/svelte": "^5.2.2",
@@ -1602,5 +1600,16 @@
   },
   "type": "module",
   "version": "0.25.0",
-  "packageManager": "pnpm@12.3.4"
+  "packageManager": "pnpm@12.3.4",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@tailwindcss/oxide",
+      "edgedriver",
+      "esbuild",
+      "geckodriver",
+      "protobufjs",
+      "svelte-preprocess"
+    ]
+  }
 }
