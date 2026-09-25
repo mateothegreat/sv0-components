@@ -240,13 +240,8 @@
        * above for example purposes only. You can access the `instance.value` property to
        * manipulate the value of the select programmatically at any time forward.
        */
-      value: config.content.nodes
-        .filter((node) => node.type === SelectComponentType.GROUP)
-        .flatMap((node) => ("children" in node ? node.children : []))
-        .filter((node) => node.type === SelectComponentType.ITEM)
-        .map((node) => ("value" in node ? node.value : undefined))
-        .filter((value): value is Item => value !== undefined)
-    })!;
+      value: config.content.nodes[1].children[0].value
+    });
 
     return {
       config,

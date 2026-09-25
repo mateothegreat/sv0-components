@@ -75,11 +75,11 @@ export const trigger = createStyleSet({
       open: []
     },
     intent: {
-      default: ["hover:bg-accent hover:text-accent-foreground"],
-      outline: ["border-2", "hover:bg-accent hover:text-accent-foreground"],
+      default: ["hover:bg-accent hover:text-foreground"],
+      outline: ["border-2", "hover:bg-accent hover:text-foreground"],
       ghost: [
         "border-transparent bg-transparent shadow-none",
-        "hover:bg-accent hover:text-accent-foreground",
+        "hover:bg-accent hover:text-foreground",
         "dark:bg-transparent dark:hover:bg-accent"
       ]
     }
@@ -113,7 +113,7 @@ export const contentStyleSet = createStyleSet({
     // Padding
     "p-1",
     // Scrollbar
-    "scrollbar-thin",
+    "scrollbar-thin", 
     // Animations - Entry
     "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
     // Animations - Exit
